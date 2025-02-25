@@ -10,20 +10,21 @@ const SubmittedTask = () => {
     useEffect(() => {
         handleFetch()
 
-    },)
+    },[tasks])
+
+    const token = localStorage.getItem("token")
 
     const handleFetch = async () => {
 
-        const token = localStorage.getItem("token")
 
         try {
-            const res = await axios.get('https://task-manager-backend-op6f6d86g.vercel.app/api/auth/', {
-                headers: {
-                  'Content-Type': 'application/json', // Optional: Set headers if needed
-                  'Authorization': token, // Optional: Add authorization token
-                },
-                withCredentials: true, // Optional: Include credentials (cookies) in the request
-              })
+            // const token = localStorage.getItem("token")
+            const res = await axios.get('https://task-manager-backend-red.vercel.app/api/auth/',
+                {
+                    headers: {
+                        Authorization: token, // Optional: Add authorization token
+                    },
+                })
             setUser(res.data)
             setTasks(res.data.tasks)
 
@@ -43,37 +44,37 @@ const SubmittedTask = () => {
     // const res = await axios.put(`https://task-manager-backend-op6f6d86g.vercel.app/api/Tasks/${e._id}`, {
 
     const handleUnSubmit = async (e) => {
-        const res = await axios.put(`https://task-manager-backend-op6f6d86g.vercel.app/api/Tasks/${e._id}`, {
+        // const token = localStorage.getItem("token")
+
+        const res = await axios.put(`https://task-manager-backend-red.vercel.app/api/Tasks/${e._id}`, {
             active: true, submitted: false
         }, {
-      withCredentials: true, // Include credentials
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer your-token-here',
-      },
-    });
+            headers: {
+                Authorization: token,
+            },
+        });
     }
     const handleAccept = async (e) => {
-        const res = await axios.put(`https://task-manager-backend-op6f6d86g.vercel.app/api/Tasks/${e._id}`, {
+        // const token = localStorage.getItem("token")
+
+        const res = await axios.put(`https://task-manager-backend-red.vercel.app/api/Tasks/${e._id}`, {
             completed: true, submitted: false
         }, {
-      withCredentials: true, // Include credentials
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer your-token-here',
-      },
-    });
+            headers: {
+                Authorization: token,
+            },
+        });
     }
     const handleReject = async (e) => {
-        const res = await axios.put(`https://task-manager-backend-op6f6d86g.vercel.app/api/Tasks/${e._id}`, {
+        // const token = localStorage.getItem("token")
+
+        const res = await axios.put(`https://task-manager-backend-red.vercel.app/api/Tasks/${e._id}`, {
             new_task: true, submitted: false, rejected: true
         }, {
-      withCredentials: true, // Include credentials
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer your-token-here',
-      },
-    });
+            headers: {
+                Authorization: token,
+            },
+        });
     }
 
 
@@ -91,7 +92,7 @@ const SubmittedTask = () => {
 
                                         return (
 
-                                            <div className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-[96vw] rounded-2xl shrink-0 relative'>
+                                            <div key={i} className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-[96vw] rounded-2xl shrink-0 relative'>
                                                 <div className='text-xl text-emerald-900 font-semibold mt-12'><span className='text-black font-bold text-2xl'>Title : </span>{e.title}</div>
                                                 <div className='text-xl text-emerald-900 font-semibold mt-3'><span className='text-black font-bold text-2xl'>Description : </span>{e.description}</div>
                                                 <div className='text-xl text-emerald-900 font-semibold mt-3'><span className='text-black font-bold text-2xl'>Date : </span>{e.date}</div>

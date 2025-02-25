@@ -16,21 +16,22 @@ const EmployeeDashboard = () => {
 
   useEffect(() => {
     handleFetch()
+    
+    console.log(user)
 
-  },)
+  },[])
 
   const handleFetch = async () => {
 
     const token = localStorage.getItem("token")
 
     try {
-      const res = await axios.get('https://task-manager-backend-op6f6d86g.vercel.app/api/auth/', {
+      const res = await axios.get('https://task-manager-backend-red.vercel.app/api/auth/', {
         headers: {
-          'Content-Type': 'application/json', // Optional: Set headers if needed
-          'Authorization': token, // Optional: Add authorization token
+          Authorization: token, // Optional: Add authorization token
         },
-        withCredentials: true, // Optional: Include credentials (cookies) in the request
       })
+
       // console.log(res.data)
       setUser(res.data)
       setTasks(res.data.tasks)

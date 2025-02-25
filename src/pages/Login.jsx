@@ -27,15 +27,8 @@ const Login = () => {
 
     setError("")
     // setUser(form)
-    const res = await axios.post('https://task-manager-backend-nr1o08qbb.vercel.app/api/auth/login', form,
-      {
-        headers: {
-          'Content-Type': 'application/json', // Set headers if needed
-          'Authorization': 'Bearer your-token', // Optional: Add authorization token
-        },
-        withCredentials: true, // Optional: Include credentials (cookies) in the request
-      }
-    )
+    const res = await axios.post('https://task-manager-backend-red.vercel.app/api/auth/login', form)
+
     if (res.status == 200) {
       console.log(res.data.type)
       // console.log(res.data.token)

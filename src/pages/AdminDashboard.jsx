@@ -30,12 +30,10 @@ const AdminDashboard = () => {
     const token = localStorage.getItem("token")
 
     try {
-      const res = await axios.get('https://task-manager-backend-op6f6d86g.vercel.app/api/auth/', {
+      const res = await axios.get('https://task-manager-backend-red.vercel.app/api/auth/', {
         headers: {
-          'Content-Type': 'application/json', // Optional: Set headers if needed
-          'Authorization': token, // Optional: Add authorization token
-        },
-        withCredentials: true, // Optional: Include credentials (cookies) in the request
+          Authorization: token
+        }
       })
       // console.log(res)
       setUser(res.data)
@@ -74,7 +72,7 @@ const AdminDashboard = () => {
 
     const token = localStorage.getItem("token")
 
-    const res = await axios.post('https://task-manager-backend-op6f6d86g.vercel.app/api/Tasks/', newTask,
+    const res = await axios.post('https://task-manager-backend-red.vercel.app/api/Tasks/', newTask,
       {
         headers: { Authorization: token },
       }
@@ -86,7 +84,7 @@ const AdminDashboard = () => {
 
     // Reset form fields
     setTask({
-      email: '',
+      employee: '',
       title: '',
       description: '',
       priority: 'high',

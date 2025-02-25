@@ -31,7 +31,7 @@ const HrDashboard = () => {
         const token = localStorage.getItem("token")
 
         try {
-            const res = await axios.get('https://task-manager-backend-op6f6d86g.vercel.app/api/auth/',
+            const res = await axios.get('https://task-manager-backend-red.vercel.app/api/auth/',
                 {
                     headers: { Authorization: token },
                 }
@@ -59,7 +59,7 @@ const HrDashboard = () => {
         };
         const token = localStorage.getItem("token")
 
-        const res =await axios.post('https://task-manager-backend-op6f6d86g.vercel.app/api/auth/register', newUser,
+        const res =await axios.post('https://task-manager-backend-red.vercel.app/api/auth/register', newUser,
             {
                 headers: { Authorization: token },
             }
