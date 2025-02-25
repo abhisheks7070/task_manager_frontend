@@ -18,7 +18,7 @@ const Navbar = () => {
         user.type == "hr" && navigate('/hr_dashboard') 
     }
     return (<>
-        <div className='p-10 bg-[#1c1c1c] text-white flex justify-between items-start'>
+        <div className='sticky top-0 right-0 z-2  p-10 bg-[#1c1c1c] text-white flex justify-between items-start'>
             <div className='text-white flex flex-col'>
 
                 <div className='text-3xl font-medium'>
