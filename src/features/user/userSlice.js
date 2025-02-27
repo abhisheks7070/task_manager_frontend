@@ -31,14 +31,15 @@ const userSlice = createSlice({
     extraReducers: (builder)=>{
         builder.addCase(fetchUser.pending, (state)=>{
             state.loading = true
+            state.error = ""
         })
         
         builder.addCase(fetchUser.fulfilled, (state, action)=>{
-                state.loading = false
-                state.data = action.payload
-            })
-            
-            builder.addCase(fetchUser.rejected, (state, action)=>{
+            state.loading = false
+            state.data = action.payload
+        })
+        
+        builder.addCase(fetchUser.rejected, (state, action)=>{
             state.loading = false,
             state.data = [],
             state.error = action.error.message

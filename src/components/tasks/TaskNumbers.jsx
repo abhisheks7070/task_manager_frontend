@@ -25,15 +25,15 @@ const TaskNumbers = (props) => {
 
     }, [])
 
-    
+
     return (
-        <div className='text-white mt-10'>
+        <div className='text-white mt-10 '>
             {
-                <div className='flex justify-between items-center mx-5'>
-                    {user.type == "employee" && <button onClick={() => { navigate("/active") }} className='flex flex-col justify-around items-center text-black font-extrabold py-10 gap-3 w-[22vw] bg-blue-400 rounded-xl text-5xl'><div>{taskCount.active}</div> <div>Active tasks</div> </button>}
-                    <button onClick={() => { navigate("/completed") }} className='flex flex-col justify-around items-center text-black font-extrabold py-10 gap-3 w-[22vw] bg-green-400 rounded-xl text-5xl'><div>{taskCount.completed}</div> <div>Completed tasks</div> </button>
-                    {user.type == "employee" && <button className='flex flex-col justify-around items-center text-black font-extrabold py-10 gap-3 w-[22vw] bg-yellow-400 rounded-xl text-5xl'><div>{taskCount.new_task}</div> <div>New tasks</div> </button>}
-                    <button onClick={() => { navigate("/submitted") }} className='flex flex-col justify-around items-center text-black font-extrabold py-10 gap-3 w-[22vw] bg-red-400 rounded-xl text-5xl'><div>{taskCount.submitted}</div> <div>Submitted tasks</div> </button>
+                <div className='flex justify-between items-center mx-5 '>
+                    {user.type == "employee" && <button onClick={() => { navigate("/active") }} className='flex flex-col justify-around items-center text-black font-extrabold py-10 gap-3 w-[22vw] bg-blue-400 rounded-xl text-5xl shadow-lg shadow-gray-400 inset-shadow-sm  inset-shadow-gray-500 cursor-pointer'><div>{taskCount.active}</div> <div>Active tasks</div> </button>}
+                    <button onClick={() => { navigate("/completed") }} className='flex flex-col justify-around items-center text-black font-extrabold py-10 gap-3 w-[22vw] bg-green-400 rounded-xl text-5xl shadow-lg shadow-gray-400 inset-shadow-sm  inset-shadow-gray-500 cursor-pointer'><div>{taskCount.completed}</div> <div>Completed tasks</div> </button>
+                    {user.type == "employee" && <button className='flex flex-col justify-around items-center text-black font-extrabold py-10 gap-3 w-[22vw] bg-yellow-400 rounded-xl text-5xl shadow-lg shadow-gray-400 inset-shadow-sm  inset-shadow-gray-500 cursor-pointer'><div>{taskCount.new_task}</div> <div>New tasks</div> </button>}
+                    <button onClick={() => { navigate("/submitted") }} className='flex flex-col justify-around items-center text-black font-extrabold py-10 gap-3 w-[22vw] bg-red-400 rounded-xl text-5xl shadow-lg shadow-gray-400 inset-shadow-sm  inset-shadow-gray-500 cursor-pointer'><div>{taskCount.submitted}</div> <div>Submitted tasks</div> </button>
 
                 </div >
 

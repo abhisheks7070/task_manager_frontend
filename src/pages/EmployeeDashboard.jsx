@@ -27,11 +27,12 @@ const EmployeeDashboard = () => {
   }
 
   if (user.error) {
+    console.log(user.error)
     return <Error errorMessage={user.error} />
   }
 
 
-  if (user.data && !user.error) {
+  if (user.data) {
 
     return (
       <>

@@ -18,10 +18,15 @@ const Error = ({ errorMessage }) => {
         )}
         <button
           className="mt-6 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
-          // onClick={() => window.location.reload()} // Reload the page
+          onClick={() => window.location.reload()} // Reload the page
+        >
+          Refresh Page
+        </button>
+        <button
+          className="absolute top-5 left-5 mt-6 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
           onClick={() => navigate("/")} // Reload the page
         >
-          Login Page
+          Home Page
         </button>
       </div>
     </div>

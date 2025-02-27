@@ -44,7 +44,7 @@ const TaskList = (props) => {
 
               return (
 
-                <div key={i} className='p-5 m-5 bg-slate-300 min-h-[35vh] w-[35vw] rounded-2xl shrink-0 relative'>
+                <div key={i} className='p-5 m-5 bg-slate-300 min-h-[35vh] w-[35vw] rounded-2xl shrink-0 relative shadow-lg shadow-black inset-shadow-sm  inset-shadow-black'>
                   <div className='text-xl text-emerald-900 font-semibold mt-12'><span className='text-black font-bold text-2xl'>Title : </span>{e.title}</div>
                   <div className='text-xl text-emerald-900 font-semibold pt-3'><span className='text-black font-bold text-2xl'>Description : </span>{e.description}</div>
                   <div className='text-xl text-emerald-900 font-semibold pt-3'><span className='text-black font-bold text-2xl'>Date : </span>{e.date}</div>
