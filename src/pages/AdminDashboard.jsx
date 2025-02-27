@@ -1,15 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Taskscontext, Usercontext } from '../context/UserContext';
 import Navbar from '../components/Navbar';
+import Loading from './Loading'
 import TaskNumbers from '../components/tasks/TaskNumbers';
+import Error from './Error';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUser } from '../features/user/userSlice';
 
 const AdminDashboard = () => {
-  // Single state object to manage form inputs
 
-  const [user, setUser] = useState({})
-  const [tasks, setTasks] = useState([])
   const [task, setTask] = useState({
     employee: '',
     title: '',
@@ -20,30 +20,20 @@ const AdminDashboard = () => {
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    handleFetch()
+  const dispatch = useDispatch()
+  const user = useSelector((state) => state.user)
 
+  const fetch = () => {
+
+    dispatch(fetchUser())
+  }
+
+  useEffect(() => {
+
+    fetch()
   }, [])
 
-  const handleFetch = async () => {
 
-    const token = localStorage.getItem("token")
-
-    try {
-      const res = await axios.get('https://task-manager-backend-red.vercel.app/api/auth/', {
-        headers: {
-          Authorization: token
-        }
-      })
-      // console.log(res)
-      setUser(res.data)
-      setTasks(res.data.tasks)
-
-    } catch (error) {
-      alert("session expired")
-      navigate("/")
-    }
-  }
 
   // Handle input changes
   const handleChange = (e) => {
@@ -54,14 +44,13 @@ const AdminDashboard = () => {
     }));
   };
 
-  // console.log([new Date().getDate(), new Date().getMonth(), new Date().getFullYear()].join("-"))
-  // Handle form submission
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Create a task object
     const newTask = {
       ...task,
-      admin: user.email,
+      admin: user.data.email,
       date: [new Date().getDate(), new Date().getMonth(), new Date().getFullYear()].join("-"),
       active: false,
       rejected: false,
@@ -72,14 +61,14 @@ const AdminDashboard = () => {
 
     const token = localStorage.getItem("token")
 
-    const res = await axios.post('https://task-manager-backend-red.vercel.app/api/Tasks/', newTask,
+    const res = await axios.post(import.meta.env.VITE_TASKS_URL, newTask,
       {
         headers: { Authorization: token },
       }
     )
 
-    console.log(res.data)
-    res.status==201 && alert('Task created successfully!');
+    console.log(res.data.message)
+    res.status == 201 && alert('Task created successfully!');
 
 
     // Reset form fields
@@ -92,13 +81,27 @@ const AdminDashboard = () => {
     });
   };
 
-  return (
-    <Usercontext.Provider value={user}>
-      <Taskscontext.Provider value={tasks}>
-        <Navbar />
+
+
+
+  if (user.loading) {
+    return <Loading />;
+  }
+
+
+  if (user.error) {
+    return <Error />
+  }
+
+
+  if (user.data) {
+// console.log(user.data)
+    return (
+      <>
+        <Navbar user={user.data} />
         <div className=" text-white items-center justify-between p-4 relative">
 
-          <TaskNumbers />
+          <TaskNumbers user={user.data} fetch={fetch} />
 
           <div className="absolute top-1/3 right-[38vw] border-2 border-solid border-emerald-300 p-8 rounded-lg shadow-lg w-full max-w-md">
             <h1 className="text-2xl font-bold mb-6 text-center">Assign Task to Employee</h1>
@@ -158,25 +161,11 @@ const AdminDashboard = () => {
                   className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-blue-500"
                   required
                 >
-                  <option value="low">Low</option>
-                  <option value="medium">Medium</option>
-                  <option value="high">High</option>
+                  <option className='text-black' value="low">Low</option>
+                  <option className='text-black' value="medium">Medium</option>
+                  <option className='text-black' value="high">High</option>
                 </select>
               </div>
-
-              {/* Date Input */}
-              {/* <div className="mb-4">
-              <label htmlFor="date" className="block text-sm font-medium mb-2">Due Date</label>
-              <input
-                type="date"
-                id="date"
-                name="date"
-                value={task.date}
-                onChange={handleChange}
-                className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500"
-                required
-              />
-            </div> */}
 
               {/* Category Input */}
               <div className="mb-6">
@@ -203,10 +192,10 @@ const AdminDashboard = () => {
             </form>
           </div>
         </div>
-      </Taskscontext.Provider>
+      </>
+    );
+  }
 
-    </Usercontext.Provider >
-  );
 };
 
 export default AdminDashboard;

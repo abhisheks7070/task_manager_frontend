@@ -1,84 +1,53 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
-import { Taskscontext, Usercontext } from '../context/UserContext'
-import { useNavigate } from 'react-router-dom'
 import TaskNumbers from '../components/tasks/TaskNumbers'
 import TaskList from '../components/tasks/TaskList'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchUser } from '../features/user/userSlice'
+import Loading from './Loading'
+import Error from './Error'
 
 const EmployeeDashboard = () => {
 
-  const [user, setUser] = useState({})
-  const [tasks, setTasks] = useState([])
-  // const [taskCount, setTaskCount] = useState({ "active": 0, "completed": 0, "failed": 0, "new_task": 0 })
+  const dispatch = useDispatch()
+  const user = useSelector((state) => state.user)
 
-  const navigate = useNavigate()
+  const fetch = () => {
 
-  useEffect(() => {
-    handleFetch()
-    
-    console.log(user)
-
-  },[])
-
-  const handleFetch = async () => {
-
-    const token = localStorage.getItem("token")
-
-    try {
-      const res = await axios.get('https://task-manager-backend-red.vercel.app/api/auth/', {
-        headers: {
-          Authorization: token, // Optional: Add authorization token
-        },
-      })
-
-      // console.log(res.data)
-      setUser(res.data)
-      setTasks(res.data.tasks)
-
-    } catch (error) {
-      alert("session expired")
-      navigate("/")
-    }
+    dispatch(fetchUser())
   }
 
-  return (
-    <>
-      <Usercontext.Provider value={user}>
-        <Taskscontext.Provider value={tasks}>
+  useEffect(() => {
+
+    fetch()
+  }, [])
+
+  if (user.loading) {
+    return <Loading />;
+  }
+
+  if (user.error) {
+    return <Error errorMessage={user.error} />
+  }
 
 
-          <Navbar />
-          <TaskNumbers />
-          <div className='bg-gray-800 py-2 mt-5'>
+  if (user.data && !user.error) {
 
-            <div className='text-5xl font-bold m-auto text-center mt-5 text-black bg-emerald-300 w-[15vw] rounded-full py-2 '>New Tasks</div>
-            <TaskList />
-          </div>
+    return (
+      <>
 
-          {/* <div className='text-white'>{user.user}</div> */}
+        <Navbar user={user.data} />
+        <TaskNumbers user={user.data} fetch={fetch} />
+        <div className='bg-gray-800 py-2 mt-5'>
 
-          {/* {
-        tasks.map((e,i) => {
-          return (
-            <div key={i}>
-              <div className='text-white'>{e.title}</div>
-              <div className='text-white'>{e.description}</div>
-              <div className='text-white'>{e.category}</div>
-            </div>
-          )
-        })
-      }
-      
-              <div className='text-white'>{taskCount.new_task}</div> */}
-          {/* <div className='text-white'>{e.description}</div> */}
-          {/* <div className='text-white'>{e.category}</div> */}
+          <div className='text-5xl font-bold m-auto text-center mt-5 text-black bg-emerald-300 w-[15vw] rounded-full py-2 '>New Tasks</div>
+          <TaskList user={user.data} fetch={fetch} />
+        </div>
+      </>
+    )
+  }
 
-        </Taskscontext.Provider>
 
-      </Usercontext.Provider>
-    </>
-  )
 }
 
 export default EmployeeDashboard

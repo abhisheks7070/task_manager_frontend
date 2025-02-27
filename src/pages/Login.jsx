@@ -1,15 +1,14 @@
 import axios from 'axios'
-import React, { createContext, useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" })
-  // const [user, setUser] = useState(null)
   const [error, setError] = useState("")
 
   let navigate = useNavigate()
 
-  const UserContext = createContext()
+  const apiUrl = import.meta.env.VITE_API_URL;
 
 
   const handleSubmit = async (e) => {
@@ -26,18 +25,18 @@ const Login = () => {
     // }
 
     setError("")
-    // setUser(form)
-    const res = await axios.post('https://task-manager-backend-red.vercel.app/api/auth/login', form)
+    const res = await axios.post(import.meta.env.VITE_AUTH_URL + 'login', form)
+    // const res = await axios.post(process.env.REACT_APP_URL + "api/auth", form)
 
     if (res.status == 200) {
-      console.log(res.data.type)
-      // console.log(res.data.token)
+      console.log(res.data.message)
       localStorage.setItem("token", res.data.token)
-      // setUser(res.data)
-      res.data.type == "employee" && navigate('/e_dashboard')
-      res.data.type == "admin" && navigate('/a_dashboard')
-      res.data.type == "hr" && navigate('/hr_dashboard')
-    }
+
+        res.data.type == "employee" && navigate('/e_dashboard')
+        res.data.type == "admin" && navigate('/a_dashboard')
+        res.data.type == "hr" && navigate('/hr_dashboard')
+      }
+    
   }
 
 
