@@ -43,12 +43,15 @@ const TaskList = (props) => {
 
 
   return (
-    <div className='text-white mx-5 mt-5'>
-      <div id='tasks' className='flex justify-start items-center flex-nowrap overflow-x-auto'>
+    <div className='text-white mt-5 bg-gray-800 pt-11 pb-2'>
+      
+
+      <div className='md:text-3xl sm:text-xl font-bold m-auto text-center text-black bg-emerald-300 w-fit rounded-full py-1 px-2 '>New Tasks</div>
+      <div id='tasks' className='flex justify-start items-center flex-nowrap overflow-x-auto mt-5'>
         {tasks.map((e, i) => {
           if (e.new_task == true) {
             return (
-              <div onClick={(event) => { handleView(event, e) }} key={i} className='p-5 m-5 bg-slate-300 h-auto w-[80vw] md:w-[35vw] rounded-2xl shrink-0 relative shadow-lg shadow-black pb-20 cursor-pointer'>
+              <div onClick={(event) => { handleView(event, e) }} key={i} className='p-5 m-5 bg-slate-300 min-h-[40vh] max-h-[50vh] h-auto w-[80vw] md:w-[35vw] rounded-2xl shrink-0 relative shadow-lg shadow-black pb-20 cursor-pointer'>
                 <div className='descrption text-lg md:text-xl text-emerald-900 font-semibold mt-12'>
                   <span className='text-black font-bold text-xl md:text-2xl'>Title : </span>{e.title}
                 </div>

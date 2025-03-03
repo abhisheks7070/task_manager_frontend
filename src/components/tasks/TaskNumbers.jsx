@@ -27,7 +27,7 @@ const TaskNumbers = (props) => {
 
 
     return (
-        <div className='text-white mt-10'>
+        <div className='text-white my-10'>
             <div className='flex flex-wrap justify-center gap-5 mx-5'>
                 {user.type === "employee" && (
                     <button

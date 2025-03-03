@@ -39,11 +39,7 @@ const EmployeeDashboard = () => {
 
         <Navbar user={user.data} />
         <TaskNumbers user={user.data} fetch={fetch} />
-        <div className='bg-gray-800 py-2 mt-5'>
-
-          <div className='md:text-3xl sm:text-xl font-bold m-auto text-center mt-5 text-black bg-emerald-300 w-fit rounded-full py-1 px-2 '>New Tasks</div>
           <TaskList user={user.data} fetch={fetch} />
-        </div>
       </>
     )
   }
