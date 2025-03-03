@@ -8,7 +8,7 @@ const Login = () => {
 
   let navigate = useNavigate()
 
-  const apiUrl = import.meta.env.VITE_API_URL;
+  alert("This is a prototype website. For employee login email- 'employee@gmail.com pwd-'123'. for admin login email- 'admin@gmail.com pwd-'123'")
 
 
   const handleSubmit = async (e) => {
