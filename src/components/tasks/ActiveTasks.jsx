@@ -65,7 +65,7 @@ const ActiveTask = () => {
 
                                     return (
 
-                                        <div key={i} className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-[96vw] rounded-2xl shrink-0 relative sm:w-[80vw] md:w-[70vw] lg:w-[60vw] xl:w-[50vw] pb-20'>
+                                        <div key={i} className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-full md:w-[80vw] lg:w-[60vw] xl:w-[50vw] rounded-2xl shrink-0 relative pb-20'>
                                             <div className='text-xl text-emerald-900 font-semibold mt-12'><span className='text-black font-bold text-2xl'>Title : </span>{e.title}</div>
                                             <div className='text-xl text-emerald-900 font-semibold pt-3'><span className='text-black font-bold text-2xl'>Description : </span>{e.description}</div>
                                             <div className='text-xl text-emerald-900 font-semibold pt-3'><span className='text-black font-bold text-2xl'>Date : </span>{e.date}</div>
