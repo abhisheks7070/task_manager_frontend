@@ -8,6 +8,8 @@ const Navbar = (props) => {
 
     const handleLogout = () => {
         localStorage.setItem("token", "")
+        localStorage.setItem("task","")
+
         navigate("/")
         console.log("logged out")
     }

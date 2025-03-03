@@ -5,25 +5,31 @@ import { useDispatch, useSelector } from 'react-redux'
 import Loading from '../../pages/Loading'
 import Error from '../../pages/Error'
 import { fetchUser } from '../../features/user/userSlice'
+import { useNavigate } from 'react-router-dom'
 
 const ActiveTask = () => {
 
     useEffect(() => {
         fetch()
     }, [])
-
-
-
-
+    
+    const navigate =useNavigate()
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
-
-
+    
+    
     const fetch = () => {
-
+        
         dispatch(fetchUser())
     }
+    
+    const handleView = async (event, e) => {
+        event.stopPropagation()
+        localStorage.setItem("task",JSON.stringify(e))
+        navigate('/task')
 
+    }
+    
     const handleClick = async (e) => {
         const res = await axios.put(import.meta.env.VITE_TASKS_URL + e._id, {
             active: false, submitted: true, rejected: false
@@ -37,7 +43,6 @@ const ActiveTask = () => {
 
         fetch()
     }
-
     if (user.loading) {
         return <Loading />;
     }
@@ -65,7 +70,7 @@ const ActiveTask = () => {
 
                                     return (
 
-                                        <div key={i} className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-full md:w-[80vw] lg:w-[60vw] xl:w-[50vw] rounded-2xl shrink-0 relative pb-20'>
+                                        <div onClick={(event)=>{handleView(event,e)}} key={i} className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-full rounded-2xl shrink-0 relative pb-20 cursor-pointer'>
                                             <div className='text-xl text-emerald-900 font-semibold mt-12'><span className='text-black font-bold text-2xl'>Title : </span>{e.title}</div>
                                             <div className='text-xl text-emerald-900 font-semibold pt-3'><span className='text-black font-bold text-2xl'>Description : </span>{e.description}</div>
                                             <div className='text-xl text-emerald-900 font-semibold pt-3'><span className='text-black font-bold text-2xl'>Date : </span>{e.date}</div>

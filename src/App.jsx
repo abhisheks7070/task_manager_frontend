@@ -9,6 +9,7 @@ import ActiveTask from './components/tasks/ActiveTasks'
 import CompletedTask from './components/tasks/CompletedTask'
 import SubmittedTask from './components/tasks/SubmittedTask'
 import Loading from './pages/Loading'
+import Task from './pages/Task'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/completed" element={<CompletedTask />} />
           <Route path="/submitted" element={<SubmittedTask />} />
           <Route path="/loading" element={<Loading />} />
+          <Route path="/task" element={<Task />} />
 
         </Routes>
       </BrowserRouter>

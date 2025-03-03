@@ -1,34 +1,48 @@
 @import "tailwindcss";
 
-*{
-    
-    box-sizing: border-box;
+* {
+
+  box-sizing: border-box;
 }
 
-html,.body{
-    background-color: #1c1c1c;
+html,
+.body {
+  background-color: #1c1c1c;
 }
 
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
-    width: 12px; /* Width of the scrollbar */
-  }
-  
-  /* Track (the background of the scrollbar) */
-  ::-webkit-scrollbar-track {
-    background: #1e1e1e; /* Dark track color */
-    border-radius: 10px; /* Rounded corners */
-  }
-  
-  /* Handle (the draggable part of the scrollbar) */
-  ::-webkit-scrollbar-thumb {
-    background: #444; /* Dark gray handle */
-    border-radius: 10px; /* Rounded corners */
-    border: 3px solid #1e1e1e; /* Match the track color */
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #666; /* Lighter gray on hover */
-  }
+  width: 12px;
+  /* Width of the scrollbar */
+}
+
+/* Track (the background of the scrollbar) */
+::-webkit-scrollbar-track {
+  background: #1e1e1e;
+  /* Dark track color */
+  border-radius: 10px;
+  /* Rounded corners */
+}
+
+/* Handle (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+  background: #444;
+  /* Dark gray handle */
+  border-radius: 10px;
+  /* Rounded corners */
+  border: 3px solid #1e1e1e;
+  /* Match the track color */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+  /* Lighter gray on hover */
+}
+
+.description {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

@@ -4,6 +4,8 @@ import Error from '../../pages/Error'
 import Loading from '../../pages/Loading'
 import { fetchUser } from '../../features/user/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
 
 const CompletedTask = () => {
     useEffect(() => {
@@ -19,6 +21,15 @@ const CompletedTask = () => {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
 
+
+    const navigate = useNavigate()
+
+    const handleView = async (event, e) => {
+        event.stopPropagation()
+        localStorage.setItem("task", JSON.stringify(e))
+        navigate('/task')
+
+    }
 
     const fetch = () => {
 
@@ -50,8 +61,8 @@ const CompletedTask = () => {
                             tasks.map((e, i) => {
                                 if (e.completed == true) {
                                     return (
-                                        <div key={i} className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-full md:w-[80vw] lg:w-[60vw] xl:w-[50vw] rounded-2xl shrink-0 relative pb-20'>
-                                            
+                                        <div onClick={(event) => { handleView(event, e) }} key={i} className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-full md:w-[80vw] lg:w-[60vw] xl:w-[50vw] rounded-2xl shrink-0 relative pb-20 cursor-ponter'>
+
                                             <div className='text-xl md:text-2xl lg:text-3xl text-emerald-900 font-semibold mt-12'>
                                                 <span className='text-black font-bold text-2xl md:text-3xl lg:text-4xl'>Title : </span>{e.title}
                                             </div>
@@ -69,8 +80,8 @@ const CompletedTask = () => {
                                             <div className='text-xl md:text-2xl lg:text-3xl text-emerald-900 font-semibold pt-3'>
                                                 <span className='text-black font-bold text-2xl md:text-3xl lg:text-4xl'>Category : </span>{e.category}
                                             </div>
-                                            <div className='text-xl md:text-2xl lg:text-3xl font-semibold bg-yellow-500 absolute top-5 right-5 px-3 py-1 rounded-xl text-black'>{e.date}</div>
-                                            <div className='text-xl md:text-2xl lg:text-3xl font-semibold bg-yellow-500 absolute top-5 right-5 px-3 py-1 rounded-xl text-black'>{e.date}</div>
+                                            <div className='text-xl md:text-2xl lg:text-3xl font-semibold bg-yellow-500 absolute top-5 right-5 px-3 py-1 rounded-xl text-black'>{task.date}</div>
+                                            <div className='text-xl md:text-2xl lg:text-3xl font-semibold bg-yellow-500 absolute top-5 right-5 px-3 py-1 rounded-xl text-black'>{task.date}</div>
                                             <div className='text-xl md:text-2xl lg:text-3xl font-semibold bg-green-500 absolute bottom-5 right-5 px-3 py-1 rounded-xl text-black'>completed</div>
                                             {/* <button className='text-xl md:text-2xl lg:text-3xl font-semibold bg-green-500 absolute bottom-5 left-[40%] px-3 py-1 rounded-xl text-black' onClick={() => { handleClick(e) }}>Submit</button> */}
                                         </div>

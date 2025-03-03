@@ -5,6 +5,8 @@ import { fetchUser } from '../../features/user/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import Loading from '../../pages/Loading'
 import Error from '../../pages/Error'
+import { useNavigate } from 'react-router-dom'
+
 
 const SubmittedTask = () => {
 
@@ -14,6 +16,7 @@ const SubmittedTask = () => {
     useEffect(() => {
         fetch()
     }, [])
+
 
 
     // const priorityOrder = { high: 3, medium: 2, low: 1 }
@@ -28,6 +31,14 @@ const SubmittedTask = () => {
     const fetch = () => {
 
         dispatch(fetchUser())
+    }
+    const navigate = useNavigate()
+
+    const handleView = async (event, e) => {
+        event.stopPropagation()
+        localStorage.setItem("task", JSON.stringify(e))
+        navigate('/task')
+
     }
 
 
@@ -94,7 +105,7 @@ const SubmittedTask = () => {
                             tasks.map((e, i) => {
                                 if (e.submitted == true) {
                                     return (
-                                        <div key={i} className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-full md:w-[80vw] lg:w-[60vw] xl:w-[50vw] rounded-2xl shrink-0 relative pb-20'>
+                                        <div onClick={(event) => { handleView(event, e) }} key={i} className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-full rounded-2xl shrink-0 relative pb-20 cursor-pointer'>
                                             <div className='text-xl text-emerald-900 font-semibold mt-12'>
                                                 <span className='text-black font-bold text-2xl'>Title : </span>{e.title}
                                             </div>
@@ -121,10 +132,10 @@ const SubmittedTask = () => {
                                                 </button>
                                             ) : (
                                                 <>
-                                                    <button className='cursor-pointer text-xl font-semibold bg-green-500 absolute bottom-5 right-5 md:right-[45%] px-3 py-1 rounded-xl text-black border-4 border-green-800' onClick={() => { handleAccept(e) }}>
+                                                    <button className='cursor-pointer text-xl font-semibold bg-green-500 absolute bottom-5 left-[20vw] px-3 py-1 rounded-xl text-black border-4 border-green-800' onClick={() => { handleAccept(e) }}>
                                                         Accept
                                                     </button>
-                                                    <button className='cursor-pointer text-xl font-semibold bg-red-500 absolute bottom-5 left-5 md:left-[45%] px-3 py-1 rounded-xl text-black border-4 border-red-800' onClick={() => { handleReject(e) }}>
+                                                    <button className='cursor-pointer text-xl font-semibold bg-red-500 absolute bottom-5 right-[20vw] px-3 py-1 rounded-xl text-black border-4 border-red-800' onClick={() => { handleReject(e) }}>
                                                         Reject
                                                     </button>
                                                 </>
