@@ -115,7 +115,7 @@ const AdminDashboard = () => {
                   name="employee"
                   value={task.employee}
                   onChange={handleChange}
-                  className="w-full px-4 py-2  border border-emerald-300 rounded-lg focus:outline-none focus:border-blue-500"
+                  className="w-full px-4 py-2  border border-emerald-300 rounded-lg focus:outline-none focus:border-emerald-500"
                   placeholder="Enter Employee email"
                   required
                 />
@@ -129,7 +129,7 @@ const AdminDashboard = () => {
                   name="title"
                   value={task.title}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-blue-500"
+                  className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-emerald-500"
                   placeholder="Enter task title"
                   required
                 />
@@ -143,7 +143,7 @@ const AdminDashboard = () => {
                   name="description"
                   value={task.description}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-blue-500"
+                  className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-emerald-500"
                   placeholder="Enter task description"
                   rows="4"
                   required
@@ -158,7 +158,7 @@ const AdminDashboard = () => {
                   name="priority"
                   value={task.priority}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-blue-500"
+                  className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-emerald-500"
                   required
                 >
                   <option className='text-black' value="low">Low</option>
@@ -176,7 +176,7 @@ const AdminDashboard = () => {
                   name="category"
                   value={task.category}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-blue-500"
+                  className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-blueemerald"
                   placeholder="Enter task category"
                   required
                 />
@@ -185,7 +185,7 @@ const AdminDashboard = () => {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-emerald-300 text-black py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+                className="w-full bg-emerald-300 text-black py-2 px-4 rounded-lg hover:bg-emerald-700 transition duration-300"
               >
                 Assign Task
               </button>

@@ -78,7 +78,7 @@ const HrDashboard = () => {
                   
       
                       <Navbar user={user.data} />
-                      <div className=" text-white flex items-center justify-center p-4">
+                      <div className=" text-white flex items-center justify-center p-4 mt-20">
                               <div className="border-2 border-emerald-300 p-8 rounded-lg shadow-lg w-full max-w-md">
                                   <h1 className="text-2xl font-bold mb-6 text-center">Create New User</h1>
                                   <form onSubmit={handleSubmit}>
@@ -92,7 +92,7 @@ const HrDashboard = () => {
                                               id="name"
                                               value={name}
                                               onChange={(e) => setName(e.target.value)}
-                                              className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-blue-500"
+                                              className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-emerald-500"
                                               placeholder="Enter name"
                                               required
                                           />
@@ -108,7 +108,7 @@ const HrDashboard = () => {
                                               id="email"
                                               value={email}
                                               onChange={(e) => setEmail(e.target.value)}
-                                              className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-blue-500"
+                                              className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-emerald-500"
                                               placeholder="Enter email"
                                               required
                                           />
@@ -124,7 +124,7 @@ const HrDashboard = () => {
                                               id="password"
                                               value={password}
                                               onChange={(e) => setPassword(e.target.value)}
-                                              className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-blue-500"
+                                              className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-emerald-500"
                                               placeholder="Enter password"
                                               required
                                           />
@@ -139,7 +139,7 @@ const HrDashboard = () => {
                                               id="userType"
                                               value={type}
                                               onChange={(e) => setType(e.target.value)}
-                                              className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-blue-500"
+                                              className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-emerald-500"
                                               required
                                           >
                                               <option className='bg-black' value="employee">Employee</option>
@@ -158,7 +158,7 @@ const HrDashboard = () => {
                                               id="designation"
                                               value={designation}
                                               onChange={(e) => setDesignation(e.target.value)}
-                                              className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-blue-500"
+                                              className="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:border-emerald-500"
                                               placeholder="Enter Designation"
                                               required
                                           />
