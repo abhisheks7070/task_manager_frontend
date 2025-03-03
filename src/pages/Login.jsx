@@ -8,8 +8,6 @@ const Login = () => {
 
   let navigate = useNavigate()
 
-  alert("This is a prototype website. For employee login email- 'employee@gmail.com pwd-'123'. for admin login email- 'admin@gmail.com pwd-'123'")
-
 
   const handleSubmit = async (e) => {
     e.preventDefault()
