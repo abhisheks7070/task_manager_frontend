@@ -35,15 +35,15 @@ const SubmittedTask = () => {
     const navigate = useNavigate()
 
     const handleView = async (event, e) => {
-        event.stopPropagation()
-        localStorage.setItem("task", JSON.stringify(e))
+        localStorage.setItem("task", e._id)
         navigate('/task')
 
     }
 
 
-    const handleUnSubmit = async (e) => {
+    const handleUnSubmit = async (event, e) => {
         // const token = localStorage.getItem("token")
+        event.stopPropagation()
 
         const res = await axios.put(import.meta.env.VITE_TASKS_URL + e._id, {
             active: true, submitted: false
@@ -52,13 +52,14 @@ const SubmittedTask = () => {
                 Authorization: token,
             },
         });
-
+        console.log(res.data.message)
         fetch()
     }
-
-    const handleAccept = async (e) => {
+    
+    const handleAccept = async (event, e) => {
         // const token = localStorage.getItem("token")
-
+        event.stopPropagation()
+        
         const res = await axios.put(import.meta.env.VITE_TASKS_URL + e._id, {
             completed: true, submitted: false
         }, {
@@ -66,11 +67,13 @@ const SubmittedTask = () => {
                 Authorization: token,
             },
         });
+        console.log(res.data.message)
         fetch()
     }
-    const handleReject = async (e) => {
+    const handleReject = async (event, e) => {
         // const token = localStorage.getItem("token")
-
+        event.stopPropagation()
+        
         const res = await axios.put(import.meta.env.VITE_TASKS_URL + e._id, {
             new_task: true, submitted: false, rejected: true
         }, {
@@ -78,6 +81,7 @@ const SubmittedTask = () => {
                 Authorization: token,
             },
         });
+        console.log(res.data.message)
         fetch()
     }
 
@@ -106,8 +110,16 @@ const SubmittedTask = () => {
                                 if (e.submitted == true) {
                                     return (
                                         <div onClick={(event) => { handleView(event, e) }} key={i} className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-full rounded-2xl shrink-0 relative pb-20 cursor-pointer'>
-                                            <div className='text-xl text-emerald-900 font-semibold mt-12'>
+                                            {user.data.type == "admin" && (
+                                                <div className='text-xl text-emerald-900 font-semibold mt-15'>
+                                                    <span className='text-black font-bold text-2xl'>Employee email : </span>{e.employee}
+                                                </div>
+                                            )}
+                                            <div className='text-xl text-emerald-900 font-semibold mt-3'>
                                                 <span className='text-black font-bold text-2xl'>Title : </span>{e.title}
+                                            </div>
+                                            <div className='text-xl text-emerald-900 font-semibold mt-3'>
+                                                <span className='text-black font-bold text-2xl'>Category : </span>{e.category}
                                             </div>
                                             <div className='text-xl text-emerald-900 font-semibold mt-3'>
                                                 <span className='text-black font-bold text-2xl'>Description : </span>{e.description}
@@ -115,27 +127,19 @@ const SubmittedTask = () => {
                                             <div className='text-xl text-emerald-900 font-semibold mt-3'>
                                                 <span className='text-black font-bold text-2xl'>Date : </span>{e.date}
                                             </div>
-                                            {user.data.type == "admin" && (
-                                                <div className='text-xl text-emerald-900 font-semibold mt-3'>
-                                                    <span className='text-black font-bold text-2xl'>Employee email : </span>{e.employee}
-                                                </div>
-                                            )}
-                                            <div className='text-xl text-emerald-900 font-semibold pt-3'>
-                                                <span className='text-black font-bold text-2xl'>Category : </span>{e.category}
-                                            </div>
                                             <div className='text-xl font-semibold bg-yellow-500 absolute top-5 right-5 px-3 py-1 rounded-xl text-black'>
                                                 {e.date}
                                             </div>
                                             {user.data.type == "employee" ? (
-                                                <button className='cursor-pointer text-xl font-semibold bg-red-500 absolute bottom-5 left-1/2 transform -translate-x-1/2 px-3 py-1 rounded-xl text-black border-4 border-red-800' onClick={() => { handleUnSubmit(e) }}>
+                                                <button className='cursor-pointer text-xl font-semibold bg-red-500 absolute bottom-5 left-1/2 transform -translate-x-1/2 px-3 py-1 rounded-xl text-black border-4 border-red-800' onClick={(event) => { handleUnSubmit(event, e) }}>
                                                     Unsubmit
                                                 </button>
                                             ) : (
                                                 <>
-                                                    <button className='cursor-pointer text-xl font-semibold bg-green-500 absolute bottom-5 left-[20vw] px-3 py-1 rounded-xl text-black border-4 border-green-800' onClick={() => { handleAccept(e) }}>
+                                                    <button className='cursor-pointer text-xl font-semibold bg-green-500 absolute bottom-5 left-[20vw] px-3 py-1 rounded-xl text-black border-4 border-green-800' onClick={(event) => { handleAccept(event, e) }}>
                                                         Accept
                                                     </button>
-                                                    <button className='cursor-pointer text-xl font-semibold bg-red-500 absolute bottom-5 right-[20vw] px-3 py-1 rounded-xl text-black border-4 border-red-800' onClick={() => { handleReject(e) }}>
+                                                    <button className='cursor-pointer text-xl font-semibold bg-red-500 absolute bottom-5 right-[20vw] px-3 py-1 rounded-xl text-black border-4 border-red-800' onClick={(event) => { handleReject(event, e) }}>
                                                         Reject
                                                     </button>
                                                 </>

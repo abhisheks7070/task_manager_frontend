@@ -26,7 +26,7 @@ const CompletedTask = () => {
 
     const handleView = async (event, e) => {
         event.stopPropagation()
-        localStorage.setItem("task", JSON.stringify(e))
+        localStorage.setItem("task", e._id)
         navigate('/task')
 
     }
@@ -80,8 +80,8 @@ const CompletedTask = () => {
                                             <div className='text-xl md:text-2xl lg:text-3xl text-emerald-900 font-semibold pt-3'>
                                                 <span className='text-black font-bold text-2xl md:text-3xl lg:text-4xl'>Category : </span>{e.category}
                                             </div>
-                                            <div className='text-xl md:text-2xl lg:text-3xl font-semibold bg-yellow-500 absolute top-5 right-5 px-3 py-1 rounded-xl text-black'>{task.date}</div>
-                                            <div className='text-xl md:text-2xl lg:text-3xl font-semibold bg-yellow-500 absolute top-5 right-5 px-3 py-1 rounded-xl text-black'>{task.date}</div>
+                                            <div className='text-xl md:text-2xl lg:text-3xl font-semibold bg-yellow-500 absolute top-5 right-5 px-3 py-1 rounded-xl text-black'>{e.date}</div>
+                                            
                                             <div className='text-xl md:text-2xl lg:text-3xl font-semibold bg-green-500 absolute bottom-5 right-5 px-3 py-1 rounded-xl text-black'>completed</div>
                                             {/* <button className='text-xl md:text-2xl lg:text-3xl font-semibold bg-green-500 absolute bottom-5 left-[40%] px-3 py-1 rounded-xl text-black' onClick={() => { handleClick(e) }}>Submit</button> */}
                                         </div>

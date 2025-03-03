@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { getTask } from '../../features/user/taskSlice'
 
 const TaskList = (props) => {
 
@@ -18,13 +16,14 @@ const TaskList = (props) => {
 
   const handleView = async (event, e) => {
     event.stopPropagation()
-    localStorage.setItem("task",JSON.stringify(e))
+    localStorage.setItem("task",e._id)
     navigate('/task')
     
   }
 
 
-  const handleClick = async (e) => {
+  const handleClick = async (event,e) => {
+    event.stopPropagation()
 
     const token = localStorage.getItem("token")
 
@@ -37,7 +36,7 @@ const TaskList = (props) => {
         },
       }
     );
-    console.log(res.data)
+    console.log(res.data.message)
     props.fetch()
 
   }
@@ -49,7 +48,7 @@ const TaskList = (props) => {
         {tasks.map((e, i) => {
           if (e.new_task == true) {
             return (
-              <div onClick={(event) => { handleView(event, e) }} key={i} className='p-5 m-5 bg-slate-300 h-[35vh] w-[80vw] md:w-[35vw] rounded-2xl shrink-0 relative shadow-lg shadow-black pb-20 cursor-pointer'>
+              <div onClick={(event) => { handleView(event, e) }} key={i} className='p-5 m-5 bg-slate-300 h-[38vh] w-[80vw] md:w-[35vw] rounded-2xl shrink-0 relative shadow-lg shadow-black pb-20 cursor-pointer'>
                 <div className='text-lg md:text-xl text-emerald-900 font-semibold mt-12'>
                   <span className='text-black font-bold text-xl md:text-2xl'>Title : </span>{e.title}
                 </div>
@@ -72,7 +71,7 @@ const TaskList = (props) => {
                 )}
                 <button
                   className='cursor-pointer text-md md:text-xl font-semibold bg-green-500 absolute bottom-5 left-5 px-3 py-1 rounded-xl text-black border-4 border-green-800'
-                  onClick={() => { handleClick(e) }}
+                  onClick={(event) => { handleClick(event,e) }}
                 >
                   Accept
                 </button>
