@@ -135,14 +135,14 @@ const SubmittedTask = () => {
                                                     Unsubmit
                                                 </button>
                                             ) : (
-                                                <>
-                                                    <button className='cursor-pointer text-xl font-semibold bg-green-500 absolute bottom-5 left-[20vw] px-3 py-1 rounded-xl text-black border-4 border-green-800' onClick={(event) => { handleAccept(event, e) }}>
+                                                <div className="flex space-x-4 absolute bottom-5 right-5">
+                                                    <button className='cursor-pointer text-xl font-semibold bg-green-500 px-3 py-1 rounded-xl text-black border-4 border-green-800' onClick={(event) => { handleAccept(event, e) }}>
                                                         Accept
                                                     </button>
-                                                    <button className='cursor-pointer text-xl font-semibold bg-red-500 absolute bottom-5 right-[20vw] px-3 py-1 rounded-xl text-black border-4 border-red-800' onClick={(event) => { handleReject(event, e) }}>
+                                                    <button className='cursor-pointer text-xl font-semibold bg-red-500 px-3 py-1 rounded-xl text-black border-4 border-red-800' onClick={(event) => { handleReject(event, e) }}>
                                                         Reject
                                                     </button>
-                                                </>
+                                                </div>
                                             )}
                                         </div>
                                     )

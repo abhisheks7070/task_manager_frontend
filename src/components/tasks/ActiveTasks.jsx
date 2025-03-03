@@ -77,7 +77,7 @@ const ActiveTask = () => {
                                             <div className='text-xl text-emerald-900 font-semibold pt-3'><span className='text-black font-bold text-2xl'>Category : </span>{e.category}</div>
                                             <div className='text-xl font-semibold bg-yellow-500 absolute top-5 right-5 px-3 py-1 rounded-xl text-black'>{e.date}</div>
                                             <div className='text-xl font-semibold bg-red-500 absolute top-5 left-5 px-3 py-1 rounded-xl text-black'>{e.priority}</div>
-                                            <button className='cursor-pointer text-xl font-semibold bg-green-500 absolute bottom-5 left-[40%] px-3 py-1 rounded-xl text-black border-4 border-green-800 ' onClick={(event) => { handleClick(event,e) }}>Submit</button>
+                                            <button className='cursor-pointer text-xl font-semibold bg-green-500 absolute bottom-5 right-5 px-3 py-1 rounded-xl text-black border-4 border-green-800 ' onClick={(event) => { handleClick(event,e) }}>Submit</button>
 
                                         </div>
                                     )

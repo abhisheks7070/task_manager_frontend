@@ -152,7 +152,7 @@ const Task = () => {
                     {/* New Task Button */}
                     {task.new_task && (
                         <button
-                            className="cursor-pointer text-md md:text-xl font-semibold bg-green-500 absolute bottom-5 left-5 px-4 py-2 rounded-xl text-white hover:bg-green-600 transition-colors"
+                            className="cursor-pointer text-md md:text-xl font-semibold bg-green-500 absolute bottom-5 right-5 px-4 py-2 rounded-xl text-white hover:bg-green-600 transition-colors"
                             onClick={() => handleAccept(task)}
                         >
                             Accept
@@ -162,7 +162,7 @@ const Task = () => {
                     {/* Active Task Button */}
                     {task.active && (
                         <button
-                            className="cursor-pointer text-md md:text-xl font-semibold bg-blue-500 absolute bottom-5 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-xl text-white hover:bg-blue-600 transition-colors"
+                            className="cursor-pointer text-md md:text-xl font-semibold bg-blue-500 absolute bottom-5 right-5 transform -translate-x-1/2 px-4 py-2 rounded-xl text-white hover:bg-blue-600 transition-colors"
                             onClick={() => handleSubmit(task)}
                         >
                             Submit
@@ -172,7 +172,7 @@ const Task = () => {
                     {/* Employee Unsubmit Button */}
                     {user.data.type === "employee" && task.submitted && (
                         <button
-                            className="cursor-pointer text-md md:text-xl font-semibold bg-red-500 absolute bottom-5 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-xl text-white hover:bg-red-600 transition-colors"
+                            className="cursor-pointer text-md md:text-xl font-semibold bg-red-500 absolute bottom-5 right-5 transform -translate-x-1/2 px-4 py-2 rounded-xl text-white hover:bg-red-600 transition-colors"
                             onClick={() => handleUnSubmit(task)}
                         >
                             Unsubmit

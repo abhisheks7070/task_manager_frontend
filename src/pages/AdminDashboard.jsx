@@ -99,11 +99,11 @@ const AdminDashboard = () => {
     return (
       <>
         <Navbar user={user.data} />
-        <div className=" text-white items-center justify-between p-4">
+        <div className=" text-white items-center justify-between">
 
           <TaskNumbers user={user.data} fetch={fetch} />
 
-          <div className="border-2 border-solid border-emerald-300 p-8 rounded-lg shadow-lg w-full max-w-md m-auto mt-10">
+          <div className="border-2 border-solid border-emerald-300 p-8 rounded-lg shadow-lg w-[85vw] max-w-md m-auto mt-10">
             <h1 className="text-2xl font-bold mb-6 text-center">Assign Task to Employee</h1>
             <form onSubmit={handleSubmit}>
               {/* Employee email */}

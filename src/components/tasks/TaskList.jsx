@@ -48,14 +48,14 @@ const TaskList = (props) => {
         {tasks.map((e, i) => {
           if (e.new_task == true) {
             return (
-              <div onClick={(event) => { handleView(event, e) }} key={i} className='p-5 m-5 bg-slate-300 h-[38vh] w-[80vw] md:w-[35vw] rounded-2xl shrink-0 relative shadow-lg shadow-black pb-20 cursor-pointer'>
-                <div className='text-lg md:text-xl text-emerald-900 font-semibold mt-12'>
+              <div onClick={(event) => { handleView(event, e) }} key={i} className='p-5 m-5 bg-slate-300 h-auto w-[80vw] md:w-[35vw] rounded-2xl shrink-0 relative shadow-lg shadow-black pb-20 cursor-pointer'>
+                <div className='descrption text-lg md:text-xl text-emerald-900 font-semibold mt-12'>
                   <span className='text-black font-bold text-xl md:text-2xl'>Title : </span>{e.title}
                 </div>
                 <div className='description text-lg md:text-xl text-emerald-900 font-semibold pt-3 truncate '>
                   <span className='text-black font-bold text-xl md:text-2xl truncate'>Description : </span>{e.description}
                 </div>
-                <div className='text-lg md:text-xl text-emerald-900 font-semibold pt-3'>
+                <div className='descrption text-lg md:text-xl text-emerald-900 font-semibold pt-3'>
                   <span className='text-black font-bold text-xl md:text-2xl'>Category : </span>{e.category}
                 </div>
                 <div className='text-lg md:text-xl font-semibold bg-yellow-500 absolute top-5 right-5 px-3 py-1 rounded-xl text-black'>
@@ -70,7 +70,7 @@ const TaskList = (props) => {
                   </div>
                 )}
                 <button
-                  className='cursor-pointer text-md md:text-xl font-semibold bg-green-500 absolute bottom-5 left-5 px-3 py-1 rounded-xl text-black border-4 border-green-800'
+                  className='cursor-pointer text-md md:text-xl font-semibold bg-green-500 absolute bottom-5 right-5 px-3 py-1 rounded-xl text-black border-4 border-green-800'
                   onClick={(event) => { handleClick(event,e) }}
                 >
                   Accept
