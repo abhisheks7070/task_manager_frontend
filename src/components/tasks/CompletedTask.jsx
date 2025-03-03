@@ -61,9 +61,9 @@ const CompletedTask = () => {
                             tasks.map((e, i) => {
                                 if (e.completed == true) {
                                     return (
-                                        <div onClick={(event) => { handleView(event, e) }} key={i} className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-full md:w-[80vw] lg:w-[60vw] xl:w-[50vw] rounded-2xl shrink-0 relative pb-20 cursor-ponter'>
+                                        <div onClick={(event) => { handleView(event, e) }} key={i} className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-full md:w-[80vw] lg:w-[60vw] xl:w-[50vw] rounded-2xl shrink-0 relative pb-20 cursor-ponter pt-15'>
 
-                                            <div className='text-xl md:text-2xl lg:text-3xl text-emerald-900 font-semibold mt-12'>
+                                            <div className='text-xl md:text-2xl lg:text-3xl text-emerald-900 font-semibold '>
                                                 <span className='text-black font-bold text-2xl md:text-3xl lg:text-4xl'>Title : </span>{e.title}
                                             </div>
                                             <div className='text-xl md:text-2xl lg:text-3xl text-emerald-900 font-semibold mt-3'>

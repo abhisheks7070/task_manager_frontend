@@ -109,9 +109,9 @@ const SubmittedTask = () => {
                             tasks.map((e, i) => {
                                 if (e.submitted == true) {
                                     return (
-                                        <div onClick={(event) => { handleView(event, e) }} key={i} className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-full rounded-2xl shrink-0 relative pb-20 cursor-pointer'>
+                                        <div onClick={(event) => { handleView(event, e) }} key={i} className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-full rounded-2xl shrink-0 relative pb-20 pt-15 cursor-pointer'>
                                             {user.data.type == "admin" && (
-                                                <div className='text-xl text-emerald-900 font-semibold mt-15'>
+                                                <div className='text-xl text-emerald-900 font-semibold '>
                                                     <span className='text-black font-bold text-2xl'>Employee email : </span>{e.employee}
                                                 </div>
                                             )}
@@ -131,7 +131,7 @@ const SubmittedTask = () => {
                                                 {e.date}
                                             </div>
                                             {user.data.type == "employee" ? (
-                                                <button className='cursor-pointer text-xl font-semibold bg-red-500 absolute bottom-5 left-1/2 transform -translate-x-1/2 px-3 py-1 rounded-xl text-black border-4 border-red-800' onClick={(event) => { handleUnSubmit(event, e) }}>
+                                                <button className='cursor-pointer text-xl font-semibold bg-red-500 absolute bottom-5 right-5 px-3 py-1 rounded-xl text-black border-4 border-red-800' onClick={(event) => { handleUnSubmit(event, e) }}>
                                                     Unsubmit
                                                 </button>
                                             ) : (
