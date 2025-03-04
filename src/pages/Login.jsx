@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, {useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
@@ -30,11 +30,11 @@ const Login = () => {
       console.log(res.data.message)
       localStorage.setItem("token", res.data.token)
 
-        res.data.type == "employee" && navigate('/e_dashboard')
-        res.data.type == "admin" && navigate('/a_dashboard')
-        res.data.type == "hr" && navigate('/hr_dashboard')
-      }
-    
+      res.data.type == "employee" && navigate('/e_dashboard')
+      res.data.type == "admin" && navigate('/a_dashboard')
+      res.data.type == "hr" && navigate('/hr_dashboard')
+    }
+
   }
 
 
@@ -47,6 +47,7 @@ const Login = () => {
 
   return (
     <>
+      <div className='text-red-500 m-auto text-center md:w-[100vw] w-screen md:text-base text-sm mt-5'>This web applcation is a prototype and is at development stage... <br />To login as Admin(create and assign new tasks), EMAIL: 'admin@gmail.com' PASSWORD:'123' <br />To login as Employee(accept and submit tasks), EMAIL: 'employee@gmail.com' PASSWORD:'123' <br />To login as HR(create new user), EMAIL: 'hr@gmail.com' PASSWORD:'123'</div>
       <div className='flex justify-center items-center h-screen '>
 
         <form action="submit" onSubmit={handleSubmit} className='flex flex-col justify-center items-center border-2 rounded-xl border-emerald-300 p-8'>
@@ -72,6 +73,7 @@ const Login = () => {
           <button className='border-2 font-semibold bg-emerald-300 px-3 py-1 rounded-2xl m-8 text-black placeholder:text-gray-400' type='submit'>Submit</button>
         </form>
       </div>
+
     </>
   )
 }
