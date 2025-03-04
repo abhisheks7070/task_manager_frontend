@@ -61,7 +61,7 @@ const SubmittedTask = () => {
         event.stopPropagation()
         
         const res = await axios.put(import.meta.env.VITE_TASKS_URL + e._id, {
-            completed: true, submitted: false
+            completed: true, submitted: false, rejected: false
         }, {
             headers: {
                 Authorization: token,
@@ -131,7 +131,7 @@ const SubmittedTask = () => {
                                                 {e.date}
                                             </div>
                                             {user.data.type == "employee" ? (
-                                                <button className='cursor-pointer text-xl font-semibold bg-red-500 absolute bottom-5 right-5 px-3 py-1 rounded-xl text-black border-4 border-red-800' onClick={(event) => { handleUnSubmit(event, e) }}>
+                                                <button className='cursor-pointer text-md md:text-xl font-semibold bg-red-500 absolute bottom-5 right-5 px-4 py-2 rounded-xl text-white hover:bg-red-600 transition-colors' onClick={(event) => { handleUnSubmit(event, e) }}>
                                                     Unsubmit
                                                 </button>
                                             ) : (

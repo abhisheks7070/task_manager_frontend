@@ -71,7 +71,7 @@ const Task = () => {
         // const token = localStorage.getItem("token")
         
         const res = await axios.put(import.meta.env.VITE_TASKS_URL + e._id, {
-            completed: true, submitted: false
+            completed: true, submitted: false, rejected: false
         }, {
             headers: {
                 Authorization: localStorage.getItem("token"),
@@ -196,6 +196,9 @@ const Task = () => {
                             </button>
                         </div>
                     )}
+                    {task.completed == true && <div className='text-xl font-semibold bg-green-500 absolute bottom-5 right-5 px-3 py-1 rounded-xl text-black'>completed</div>}
+                    {(task.rejected == true) && <div className='text-xl font-semibold text-red-500 absolute bottom-5 left-5 px-3 py-1 rounded-xl'>Rejected</div>}
+
                 </div>
             </div>
         )

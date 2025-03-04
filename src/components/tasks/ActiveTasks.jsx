@@ -32,7 +32,7 @@ const ActiveTask = () => {
     const handleClick = async (event,e) => {
         event.stopPropagation()
         const res = await axios.put(import.meta.env.VITE_TASKS_URL + e._id, {
-            active: false, submitted: true, rejected: false
+            active: false, submitted: true
         },
             {
                 headers: {
@@ -77,7 +77,8 @@ const ActiveTask = () => {
                                             <div className='text-xl text-emerald-900 font-semibold pt-3'><span className='text-black font-bold text-2xl'>Category : </span>{e.category}</div>
                                             <div className='text-xl font-semibold bg-yellow-500 absolute top-5 right-5 px-3 py-1 rounded-xl text-black'>{e.date}</div>
                                             <div className='text-xl font-semibold bg-red-500 absolute top-5 left-5 px-3 py-1 rounded-xl text-black'>{e.priority}</div>
-                                            <button className='cursor-pointer text-xl font-semibold bg-green-500 absolute bottom-5 right-5 px-3 py-1 rounded-xl text-black border-4 border-green-800 ' onClick={(event) => { handleClick(event,e) }}>Submit</button>
+                                            {e.rejected == true && <div className='text-xl font-semibold text-red-500 absolute bottom-5 left-5 px-3 py-1 rounded-xl'>Rejected</div>}
+                                            <button className='cursor-pointer text-md md:text-xl font-semibold bg-green-500 absolute bottom-5 right-5 px-4 py-2 rounded-xl text-white hover:bg-green-600 transition-colors ' onClick={(event) => { handleClick(event,e) }}>Submit</button>
 
                                         </div>
                                     )

@@ -61,28 +61,29 @@ const CompletedTask = () => {
                             tasks.map((e, i) => {
                                 if (e.completed == true) {
                                     return (
-                                        <div onClick={(event) => { handleView(event, e) }} key={i} className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-full md:w-[80vw] lg:w-[60vw] xl:w-[50vw] rounded-2xl shrink-0 relative pb-20 cursor-ponter pt-15'>
+                                        <div onClick={(event) => { handleView(event, e) }} key={i} className='p-5 mb-5 bg-slate-300 min-h-[35vh] w-full rounded-2xl shrink-0 relative py-15 cursor-pointer'>
 
-                                            <div className='text-xl md:text-2xl lg:text-3xl text-emerald-900 font-semibold '>
-                                                <span className='text-black font-bold text-2xl md:text-3xl lg:text-4xl'>Title : </span>{e.title}
-                                            </div>
-                                            <div className='text-xl md:text-2xl lg:text-3xl text-emerald-900 font-semibold mt-3'>
-                                                <span className='text-black font-bold text-2xl md:text-3xl lg:text-4xl'>Description : </span>{e.description}
-                                            </div>
-                                            <div className='text-xl md:text-2xl lg:text-3xl text-emerald-900 font-semibold mt-3'>
-                                                <span className='text-black font-bold text-2xl md:text-3xl lg:text-4xl'>Date : </span>{e.date}
-                                            </div>
-                                            {user.type == "admin" && (
-                                                <div className='text-xl md:text-2xl lg:text-3xl text-emerald-900 font-semibold mt-3'>
-                                                    <span className='text-black font-bold text-2xl md:text-3xl lg:text-4xl'>Employee email : </span>{e.employee}
+                                            {user.data.type == "admin" && (
+                                                <div className='text-xl text-emerald-900 font-semibold '>
+                                                    <span className='text-black font-bold text-2xl'>Employee email : </span>{e.employee}
                                                 </div>
                                             )}
-                                            <div className='text-xl md:text-2xl lg:text-3xl text-emerald-900 font-semibold pt-3'>
-                                                <span className='text-black font-bold text-2xl md:text-3xl lg:text-4xl'>Category : </span>{e.category}
+                                            <div className='text-xl text-emerald-900 font-semibold mt-3'>
+                                                <span className='text-black font-bold text-2xl'>Title : </span>{e.title}
                                             </div>
-                                            <div className='text-xl md:text-2xl lg:text-3xl font-semibold bg-yellow-500 absolute top-5 right-5 px-3 py-1 rounded-xl text-black'>{e.date}</div>
-                                            
-                                            <div className='text-xl md:text-2xl lg:text-3xl font-semibold bg-green-500 absolute bottom-5 right-5 px-3 py-1 rounded-xl text-black'>completed</div>
+                                            <div className='text-xl text-emerald-900 font-semibold mt-3'>
+                                                <span className='text-black font-bold text-2xl'>Category : </span>{e.category}
+                                            </div>
+                                            <div className='text-xl text-emerald-900 font-semibold mt-3'>
+                                                <span className='text-black font-bold text-2xl'>Description : </span>{e.description}
+                                            </div>
+                                            <div className='text-xl text-emerald-900 font-semibold mt-3'>
+                                                <span className='text-black font-bold text-2xl'>Date : </span>{e.date}
+                                            </div>
+                                            <div className='text-xl font-semibold bg-yellow-500 absolute top-5 right-5 px-3 py-1 rounded-xl text-black'>
+                                                {e.date}
+                                            </div>
+                                            <div className='text-xl font-semibold bg-green-500 absolute bottom-5 right-5 px-3 py-1 rounded-xl text-black'>completed</div>
                                             {/* <button className='text-xl md:text-2xl lg:text-3xl font-semibold bg-green-500 absolute bottom-5 left-[40%] px-3 py-1 rounded-xl text-black' onClick={() => { handleClick(e) }}>Submit</button> */}
                                         </div>
                                     )

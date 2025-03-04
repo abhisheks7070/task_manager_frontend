@@ -43,7 +43,7 @@ const TaskList = (props) => {
 
 
   return (
-    <div className='text-white mt-5 bg-gray-800 pt-11 pb-2'>
+    <div className='text-white mt-5 bg-gray-800 pt-11'>
       
 
       <div className='md:text-3xl sm:text-xl font-bold m-auto text-center text-black bg-emerald-300 w-fit rounded-full py-1 px-2 '>New Tasks</div>
@@ -68,12 +68,12 @@ const TaskList = (props) => {
                   {e.priority}
                 </div>
                 {e.rejected == true && (
-                  <div className='text-md font-semibold text-red-500 absolute bottom-5 md:right-5 right-1 px-3 py-1 rounded-xl'>
+                  <div className='text-md font-semibold text-red-500 absolute bottom-5 left-1 px-3 py-1 rounded-xl'>
                     Rejected
                   </div>
                 )}
                 <button
-                  className='cursor-pointer text-md md:text-xl font-semibold bg-green-500 absolute bottom-5 right-5 px-3 py-1 rounded-xl text-black border-4 border-green-800'
+                  className='cursor-pointer text-md md:text-xl font-semibold bg-green-500 absolute bottom-5 right-5 px-4 py-2 rounded-xl text-white hover:bg-green-600 transition-colors'
                   onClick={(event) => { handleClick(event,e) }}
                 >
                   Accept
