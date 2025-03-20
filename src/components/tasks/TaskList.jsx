@@ -5,24 +5,24 @@ import { useNavigate } from 'react-router-dom'
 const TaskList = (props) => {
 
   const tasks = [...props.user.tasks]
-  
-  
-  
+
+
+
   const priorityOrder = { high: 3, medium: 2, low: 1 }
-  
+
   tasks.sort((a, b) => priorityOrder[b.priority] - priorityOrder[a.priority])
-  
+
   const navigate = useNavigate()
 
   const handleView = async (event, e) => {
     event.stopPropagation()
-    localStorage.setItem("task",e._id)
+    localStorage.setItem("task", e._id)
     navigate('/task')
-    
+
   }
 
 
-  const handleClick = async (event,e) => {
+  const handleClick = async (event, e) => {
     event.stopPropagation()
 
     const token = localStorage.getItem("token")
@@ -44,7 +44,7 @@ const TaskList = (props) => {
 
   return (
     <div className='text-white mt-5 bg-gray-800 pt-11'>
-      
+
 
       <div className='md:text-3xl sm:text-xl font-bold m-auto text-center text-black bg-emerald-300 w-fit rounded-full py-1 px-2 '>New Tasks</div>
       <div id='tasks' className='flex justify-start items-center flex-nowrap overflow-x-auto mt-5'>
@@ -74,7 +74,7 @@ const TaskList = (props) => {
                 )}
                 <button
                   className='cursor-pointer text-md md:text-xl font-semibold bg-green-500 absolute bottom-5 right-5 px-4 py-2 rounded-xl text-white hover:bg-green-600 transition-colors'
-                  onClick={(event) => { handleClick(event,e) }}
+                  onClick={(event) => { handleClick(event, e) }}
                 >
                   Accept
                 </button>
@@ -83,6 +83,9 @@ const TaskList = (props) => {
           }
         })}
       </div>
+      {(tasks.filter((item) => {
+        return item.new_task == true
+      })).length == 0 && <div className='text-white text-2xl md:text-6xl p-10'>No new tasks to show...</div>}
     </div>
   )
 

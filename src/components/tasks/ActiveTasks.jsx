@@ -87,6 +87,9 @@ const ActiveTask = () => {
                         }
 
                     </div>
+                    {(tasks.filter((item)=>{
+                        return item.active == true
+                    })).length == 0 && <div className='text-white text-2xl md:text-6xl'>No tasks to show...</div>}
                 </div>
 
             </div>

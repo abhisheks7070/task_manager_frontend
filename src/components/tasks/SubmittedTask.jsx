@@ -55,11 +55,11 @@ const SubmittedTask = () => {
         console.log(res.data.message)
         fetch()
     }
-    
+
     const handleAccept = async (event, e) => {
         // const token = localStorage.getItem("token")
         event.stopPropagation()
-        
+
         const res = await axios.put(import.meta.env.VITE_TASKS_URL + e._id, {
             completed: true, submitted: false, rejected: false
         }, {
@@ -73,7 +73,7 @@ const SubmittedTask = () => {
     const handleReject = async (event, e) => {
         // const token = localStorage.getItem("token")
         event.stopPropagation()
-        
+
         const res = await axios.put(import.meta.env.VITE_TASKS_URL + e._id, {
             new_task: true, submitted: false, rejected: true
         }, {
@@ -98,6 +98,7 @@ const SubmittedTask = () => {
 
     if (user.data) {
         const tasks = user.data.tasks
+        
         return (
             <div className='relative'>
 
@@ -150,6 +151,9 @@ const SubmittedTask = () => {
                             })
                         }
                     </div>
+                    {(tasks.filter((item)=>{
+                        return item.submitted == true
+                    })).length == 0 && <div className='text-white text-2xl md:text-6xl'>No tasks to show...</div>}
                 </div>
 
             </div>
